@@ -134,7 +134,7 @@ var googleMapPolyEditor = new Class({
 		this.setOptions(options);
 		if(!this.options.markerimage)
 			this.options.markerimage=new google.maps.MarkerImage(
-				sBaseHref+'system/modules/googlemaps/html/lineedit0.png',
+				sBaseHref+'system/modules/contaomaps/html/lineedit0.png',
 				/*size*/new google.maps.Size(16, 16),
 				/*origin*/new google.maps.Point(0,0),
 				/*anchor*/new google.maps.Point(8, 8)
@@ -142,7 +142,7 @@ var googleMapPolyEditor = new Class({
 			);
 		if(!this.options.lineimage)
 			this.options.lineimage=new google.maps.MarkerImage(
-				sBaseHref+'system/modules/googlemaps/html/lineedit1.png',
+				sBaseHref+'system/modules/contaomaps/html/lineedit1.png',
 				/*size*/new google.maps.Size(16, 16),
 				/*origin*/new google.maps.Point(0,0),
 				/*anchor*/new google.maps.Point(8, 8)
