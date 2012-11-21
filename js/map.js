@@ -167,7 +167,7 @@ ContaoMapping.Map = new ContaoMapping.Class({
 		code = '(function(){'+code+'; this.killscript("'+id+'");}).bind('+this.options.id+').run();';
 		var e = document.createElement("script");e.type="text/javascript";
 		/* IE does not allow <script> to have children. :( */
-		if (null == e.canHaveChildren || e.canHaveChildren){e.appendChild(document.createTextNode(code));} 
+		if (null == e.canHaveChildren || e.canHaveChildren){e.appendChild(document.createTextNode(code));}
 		else {e.text = code;}
 		this.$scripts[id]=e;
 		document.getElementsByTagName("head")[0].appendChild(e);
@@ -179,7 +179,7 @@ ContaoMapping.Map = new ContaoMapping.Class({
 		if(navigator.geolocation)
 		{
 			navigator.geolocation.getCurrentPosition(
-				function(position) {if(successCallback)successCallback(position.coords.latitude, position.coords.longitude);}, 
+				function(position) {if(successCallback)successCallback([position.coords.latitude, position.coords.longitude]);},
 				function(){if(errorCallback)errorCallback(true);}
 			);
 			return;
