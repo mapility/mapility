@@ -5,7 +5,7 @@
  * @copyright  Cyberspectrum 2012
  * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
  * @package    ContaoMaps
- * @license    LGPL 
+ * @license    LGPL
  * @filesource
  */
 
@@ -33,14 +33,14 @@ $GLOBALS['TL_DCA']['tl_contaomap_layer'] = array
 			'mode'						=> 1,
 			'fields'					=> array('name'),
 			'flag'						=> 1,
-			'panelLayout'				=> 'filter,limit', 
-			'headerFields'				=> array('name', 'tableName', 'tstamp', 'makeFeed'), 
+			'panelLayout'				=> 'filter,limit',
+			'headerFields'				=> array('name', 'tableName', 'tstamp', 'makeFeed'),
 		),
 		'label' => array
 		(
 			'fields'					=> array('name'),
 			'format'					=> '%s',
-			'label_callback'			=> array('tl_contaomap_layer', 'getLabel') 
+			'label_callback'			=> array('tl_contaomap_layer', 'getLabel')
 		),
 		'global_operations' => array
 		(
@@ -167,7 +167,7 @@ $GLOBALS['TL_DCA']['tl_contaomap_layer'] = array
 		),
 		'ignore_area_filter' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_catalog_fields']['ignore_area_filter'],
+			'label'                   => &$GLOBALS['TL_LANG']['tl_contaomap_layer']['ignore_area_filter'],
 			'exclude'                 => true,
 			'inputType'               => 'checkbox',
 			'eval'                    => array('rgxp'=>'digit', 'nospace'=>true, 'tl_class'=>'w50')
@@ -218,7 +218,7 @@ class tl_contaomap_layer extends Backend
 	 * Return all map layer types as array
 	 * @param object
 	 * @return string
-	 */ 
+	 */
 	public function getMapTypes(DataContainer $dc)
 	{
 		$ret=array('internal' => &$GLOBALS['TL_LANG']['tl_contaomap_layer']['types']['internal']);

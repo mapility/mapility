@@ -5,7 +5,7 @@
  * @copyright  Cyberspectrum 2012
  * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
  * @package    ContaoMaps
- * @license    LGPL 
+ * @license    LGPL
  * @filesource
  */
 
@@ -15,6 +15,7 @@
 $GLOBALS['TL_LANG']['tl_contaomap_layer']['name']= array('Bezeichner für den Kartenlayer', 'Bitte geben Sie einen Bezeichner für den Layer ein.');
 $GLOBALS['TL_LANG']['tl_contaomap_layer']['alias']= array('Alias', 'Bitte geben Sie den Alias für diesen Layer ein ein.');
 $GLOBALS['TL_LANG']['tl_contaomap_layer']['type']= array('Layer Typ', 'Bitte wählen Sie die den Typ des Layers.');
+$GLOBALS['TL_LANG']['tl_contaomap_layer']['ignore_area_filter']= array('Bereichsfilter nicht anwenden', 'Bitte wählen Sie die hier, wenn der in AJAX Anfragen übergebene Bereich nicht ausgewertet werden soll.');
 
 /**
  * Legends
