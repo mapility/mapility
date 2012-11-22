@@ -157,6 +157,7 @@ $GLOBALS['TL_DCA']['tl_contaomap_layer'] = array
 			'exclude'                 => true,
 			'inputType'               => 'select',
 			'options'                 => array('markermanager', 'markerclusterer'),
+			'reference'               => &$GLOBALS['TL_LANG']['tl_contaomap_layer']['mgrtype_ref'],
 			'eval'                    => array('tl_class' => 'w50', 'mandatory' => true, 'submitOnChange'=>true)
 		),
 		'clustermgr' => array
