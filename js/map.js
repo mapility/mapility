@@ -21,11 +21,13 @@ ContaoMapping.Map = new ContaoMapping.Class({
 		var drvclass=ContaoMapping.getDataDriver('application/json');
 		this.datadriver= new drvclass({map:this, url:this.options.url, additionalparams: this.options.additionalparams});
 
-		var loading=this.mapLoading.bind(this);
-
-		this.datadriver
-			.addEvent('requestStart', loading)
-			.addEvent('requestDone', loading);
+		if (this.options.loadinganimation)
+		{
+			var loading=this.mapLoading.bind(this);
+			this.datadriver
+				.addEvent('requestStart', loading)
+				.addEvent('requestDone', loading);
+		}
 
 		this.fireClassEvent('initialize', [this]);
 	},

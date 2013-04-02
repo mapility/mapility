@@ -7,17 +7,17 @@
 -- *                                                        *
 -- **********************************************************
 
--- 
+--
 -- Table `tl_modules`
--- 
+--
 
 CREATE TABLE `tl_module` (
   `contaomaps_id` int(10) NOT NULL default '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- 
+--
 -- Table `tl_contaomap`
--- 
+--
 
 CREATE TABLE `tl_contaomap` (
   `id` int(10) unsigned NOT NULL auto_increment,
@@ -38,12 +38,13 @@ CREATE TABLE `tl_contaomap` (
   `template` varchar(64) NOT NULL default '',
   `layer` blob NULL,
   `layerswitch` char(1) NOT NULL default '0',
+  `loadinganimation` char(1) NOT NULL default '0',
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- 
+--
 -- Table `tl_contaomap_layer`
--- 
+--
 CREATE TABLE `tl_contaomap_layer` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `pid` int(10) unsigned NOT NULL default '0',
@@ -59,9 +60,9 @@ CREATE TABLE `tl_contaomap_layer` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- 
+--
 -- Table `tl_contaomap_marker`
--- 
+--
 CREATE TABLE `tl_contaomap_marker` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `pid` int(10) unsigned NOT NULL default '0',
@@ -80,9 +81,9 @@ CREATE TABLE `tl_contaomap_marker` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- 
+--
 -- Table `tl_contaomap_polygon`
--- 
+--
 CREATE TABLE `tl_contaomap_polygon` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `pid` int(10) unsigned NOT NULL default '0',
@@ -103,9 +104,9 @@ CREATE TABLE `tl_contaomap_polygon` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
--- 
+--
 -- Table `tl_contaomap_polyline`
--- 
+--
 CREATE TABLE `tl_contaomap_polyline` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `pid` int(10) unsigned NOT NULL default '0',

@@ -5,11 +5,11 @@
  * @copyright  Cyberspectrum 2012
  * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
  * @package    ContaoMaps
- * @license    LGPL 
+ * @license    LGPL
  * @filesource
  */
 
-class ContaoMap extends System
+abstract class ContaoMap extends System
 {
 	protected $layerIds = NULL;
 	protected $arrLayer = array();
@@ -71,7 +71,7 @@ class ContaoMap extends System
 		}
 		$this->knownIds=$realIds;
 
-		$this->setKeys($arrData, array('name', 'center', 'width', 'height', 'alttext', 'encoder', 'ajaxUrl', 'template', 'northEast', 'southWest'));
+		$this->setKeys($arrData, array('name', 'center', 'width', 'height', 'alttext', 'encoder', 'ajaxUrl', 'template', 'northEast', 'southWest', 'loadinganimation'));
 	}
 
 	public function setKeys($arrData, $arrKeys)
@@ -101,6 +101,7 @@ class ContaoMap extends System
 			case 'encoder':
 			case 'ajaxUrl':
 			case 'template':
+			case 'loadinganimation':
 				$this->arrOther[$key] = deserialize($value);
 			break;
 			case 'northEast':
@@ -113,7 +114,7 @@ class ContaoMap extends System
 				throw new Exception('Can not set property '.$key);
 		}
 	}
-	
+
 	public function __get($key)
 	{
 		switch($key)
@@ -125,6 +126,7 @@ class ContaoMap extends System
 			case 'alttext':
 			case 'encoder':
 			case 'ajaxUrl':
+			case 'loadinganimation':
 				return array_key_exists($key, $this->arrOther) ? $this->arrOther[$key] : NULL;
 			case 'northEast':
 				return $this->viewPort[0];
@@ -150,6 +152,8 @@ class ContaoMap extends System
 			$objTemplate->$key=$this->$key;
 	}
 
+	abstract public function jsonMapOptions();
+
 	public function setArea($area)
 	{
 		if(!is_array($area))
@@ -169,7 +173,7 @@ class ContaoMap extends System
 	{
 		if($this->northEast && $this->southWest)
 		{
-			return '(('.$latField.'>='.$this->northEast[0].' AND '.$longField.'>='.$this->northEast[1].') 
+			return '(('.$latField.'>='.$this->northEast[0].' AND '.$longField.'>='.$this->northEast[1].')
 			AND ('.$latField.'<='.$this->southWest[0].' AND '.$longField.'<='.$this->southWest[1].'))';
 		}
 		return '';
