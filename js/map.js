@@ -6,6 +6,7 @@ ContaoMapping.Map = new ContaoMapping.Class({
 	$scripts: [],
 	options:{},
 	layers: [],
+	loadingbox: null,
 
 	initialize: function(container, options)
 	{
@@ -18,8 +19,13 @@ ContaoMapping.Map = new ContaoMapping.Class({
 
 		// TODO: determine which datadriver to use. or even better pass driver instantiation in global script.
 		var drvclass=ContaoMapping.getDataDriver('application/json');
-		var me=this;
-		this.datadriver= new drvclass({map:me, url:this.options.url, additionalparams: this.options.additionalparams});
+		this.datadriver= new drvclass({map:this, url:this.options.url, additionalparams: this.options.additionalparams});
+
+		var loading=this.mapLoading.bind(this);
+
+		this.datadriver
+			.addEvent('requestStart', loading)
+			.addEvent('requestDone', loading);
 
 		this.fireClassEvent('initialize', [this]);
 	},
@@ -27,6 +33,17 @@ ContaoMapping.Map = new ContaoMapping.Class({
 	getImplementationType: function()
 	{
 		return null;
+	},
+
+	mapLoading: function(state, driver)
+	{
+		if (!this.loadingbox)
+		{
+			this.loadingbox = new Element('div', {
+				'class': 'map_ajaxBox'
+			}).inject($(this.container), 'bottom');
+		}
+		this.loadingbox.setStyle('display', state ? 'block' : 'none');
 	},
 
 	boundsChanged: function()

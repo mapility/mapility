@@ -15,7 +15,7 @@ ContaoMapping.registerDatadriver = function(driver)
 
 
 ContaoMapping.DataDriver=new ContaoMapping.Class({
-	Implements: [Options],
+	Implements: [Options, Events],
 
 	runningRequests: [],
 
@@ -53,11 +53,13 @@ ContaoMapping.DataDriver=new ContaoMapping.Class({
 	requestStarted: function(xhr)
 	{
 		this.runningRequests.push(xhr);
+		this.fireEvent('requestStart', [true, this]);
 	},
 
 	requestDone: function(xhr)
 	{
 		this.runningRequests.erase(xhr);
+		this.fireEvent('requestDone', [false, this]);
 	},
 
 	makeRequest: function(opts)
@@ -65,31 +67,30 @@ ContaoMapping.DataDriver=new ContaoMapping.Class({
 		var url = this.getUrl();
 		if(!url)
 			return;
-		var req;
+		var that=this, req;
 		opts = opts||{};
 		var myOpts = {
 			url: url,
 			onRequest: (function()
-				{
-					this.requestStarted(req);
-				}).bind(this),
+			{
+				that.requestStarted(req);
+			}),
 			onComplete: (function()
-				{
-					this.requestDone(req);
-				}).bind(this),
+			{
+				that.requestDone(req);
+			}),
 			onFailure: (function(xhr)
-				{
-					this.requestDone(req);
-					if(opts.errorcallback)
-						opts.errorcallback();
-				}).bind(this),
+			{
+				that.requestDone(req);
+				if(opts.errorcallback)
+					opts.errorcallback();
+			}),
 			onSuccess: (function(data, xml)
-				{
-					var data = this.decodeData(data, xml, req);
-					//this.options.map.handleMapData.apply(this.options.map, [data]);
-					if(opts.callback)
-						opts.callback(data);
-				}).bind(this)
+			{
+				var data = that.decodeData(data, xml, req);
+				if(opts.callback)
+					opts.callback(data);
+			})
 		};
 		opts=Object.merge(myOpts, opts);
 		req=new Request(opts);
