@@ -71,8 +71,8 @@ CREATE TABLE `tl_contaomap_marker` (
   `coords` varchar(64) NOT NULL default '',
   `latitude` float(10,7) NOT NULL default '0.0000000',
   `longitude` float(10,7) NOT NULL default '0.0000000'
-  `icon` varchar(255) NOT NULL default '',
-  `shadow` varchar(255) NOT NULL default '',
+  `icon` binary(16) NULL,
+  `shadow` binary(16) NULL,
   `anchor` varchar(64) NOT NULL default '',
   `text` text NULL,
   `info_anchor` varchar(64) NOT NULL default '',
