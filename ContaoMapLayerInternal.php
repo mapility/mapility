@@ -43,11 +43,12 @@ class ContaoMapLayerInternal extends ContaoMapLayer
 				$objMarker->zindex = $objLayer->zindex;
 			if($objMarkers->name)
 				$objMarker->name = $objMarkers->name;
-			$arrIcon=deserialize($objMarkers->icon);
-			if($arrIcon)
+			$objIcon=\FilesModel::findByUuid($objMarkers->icon);
+
+			if($objIcon)
 			{
-				$objMarker->icon = $arrIcon;
-				$objIcon = new File($arrIcon);
+				$objMarker->icon = $objIcon->path;
+				$objIcon = new File($objIcon->path);
 				$objMarker->iconsize = $objIcon->width.','.$objIcon->height;
 				if($objMarkers->anchor)
 					$objMarker->iconposition = $objMarkers->anchor;
