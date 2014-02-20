@@ -189,7 +189,7 @@ class tl_contaomap_marker extends Backend
 	public function onSave($varValue, DataContainer $dc) {
 		// migrate values to location table.
 		$latLng=explode(',', $varValue);
-		$this->Database->prepare('UPDATE tl_contaomap_marker SET latitude=?, longitude=? WHERE id=?')
+		\Database::getInstance()->prepare('UPDATE tl_contaomap_marker SET latitude=?, longitude=? WHERE id=?')
 						->execute($latLng[0], $latLng[1], $dc->id);
 		return $varValue;
 	}
@@ -245,7 +245,7 @@ class tl_contaomap_marker extends Backend
 			case 'show':
 			case 'delete':
 			case 'toggle':
-				$objArchive = $this->Database->prepare("SELECT pid FROM tl_contaomap_marker WHERE id=?")
+				$objArchive = \Database::getInstance()->prepare("SELECT pid FROM tl_contaomap_marker WHERE id=?")
 											 ->limit(1)
 											 ->execute($id);
 
@@ -274,7 +274,7 @@ class tl_contaomap_marker extends Backend
 					$this->redirect('contao/main.php?act=error');
 				}
 
-				$objArchive = $this->Database->prepare("SELECT id FROM tl_contaomap_marker WHERE pid=?")
+				$objArchive = \Database::getInstance()->prepare("SELECT id FROM tl_contaomap_marker WHERE pid=?")
 											 ->execute($id);
 
 				if ($objArchive->numRows < 1)
@@ -365,7 +365,7 @@ class tl_contaomap_marker extends Backend
 			}
 		}
 		// Update the database
-		$this->Database->prepare("UPDATE tl_contaomap_marker SET tstamp=". time() .", published='" . ($blnVisible ? 1 : '') . "' WHERE id=?")
+		\Database::getInstance()->prepare("UPDATE tl_contaomap_marker SET tstamp=". time() .", published='" . ($blnVisible ? 1 : '') . "' WHERE id=?")
 					   ->execute($intId);
 		$this->createNewVersion('tl_contaomap_marker', $intId);
 	}

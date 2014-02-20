@@ -233,18 +233,18 @@ class tl_contaomap extends Backend
 	public function checkUpgrade()
 	{
 		// determine if we are upgrading from the never public released google map extension.
-		if($this->Database->tableExists('tl_googlemaplayer'))
+		if(\Database::getInstance()->tableExists('tl_googlemaplayer'))
 		{
-			if($this->Database->tableExists('tl_googlemaps'))
-				$this->Database->execute(sprintf('ALTER TABLE `%s` RENAME TO `%s`', 'tl_googlemaps', 'tl_contaomap'));
-			if($this->Database->tableExists('tl_googlemapmarkers'))
-				$this->Database->execute(sprintf('ALTER TABLE `%s` RENAME TO `%s`', 'tl_googlemapmarkers', 'tl_contaomap_marker'));
-			if($this->Database->tableExists('tl_googlemappolygons'))
-				$this->Database->execute(sprintf('ALTER TABLE `%s` RENAME TO `%s`', 'tl_googlemappolygons', 'tl_contaomap_polygon'));
-			if($this->Database->tableExists('tl_googlemappolylines'))
-				$this->Database->execute(sprintf('ALTER TABLE `%s` RENAME TO `%s`', 'tl_googlemappolylines', 'tl_contaomap_polyline'));
-			if($this->Database->tableExists('tl_googlemaplayer'))
-				$this->Database->execute(sprintf('ALTER TABLE `%s` RENAME TO `%s`', 'tl_googlemaplayer', 'tl_contaomap_layer'));
+			if(\Database::getInstance()->tableExists('tl_googlemaps'))
+				\Database::getInstance()->execute(sprintf('ALTER TABLE `%s` RENAME TO `%s`', 'tl_googlemaps', 'tl_contaomap'));
+			if(\Database::getInstance()->tableExists('tl_googlemapmarkers'))
+				\Database::getInstance()->execute(sprintf('ALTER TABLE `%s` RENAME TO `%s`', 'tl_googlemapmarkers', 'tl_contaomap_marker'));
+			if(\Database::getInstance()->tableExists('tl_googlemappolygons'))
+				\Database::getInstance()->execute(sprintf('ALTER TABLE `%s` RENAME TO `%s`', 'tl_googlemappolygons', 'tl_contaomap_polygon'));
+			if(\Database::getInstance()->tableExists('tl_googlemappolylines'))
+				\Database::getInstance()->execute(sprintf('ALTER TABLE `%s` RENAME TO `%s`', 'tl_googlemappolylines', 'tl_contaomap_polyline'));
+			if(\Database::getInstance()->tableExists('tl_googlemaplayer'))
+				\Database::getInstance()->execute(sprintf('ALTER TABLE `%s` RENAME TO `%s`', 'tl_googlemaplayer', 'tl_contaomap_layer'));
 		}
 	}
 }

@@ -181,7 +181,7 @@ class tl_contaomap_polyline extends Backend
 	public function onSave($varValue, DataContainer $dc) {
 		// migrate values to location table.
 		$arrExtends = ContaoMap::calcExtends($varValue);
-		$this->Database->prepare('UPDATE tl_contaomap_polyline %s WHERE id=?')
+		\Database::getInstance()->prepare('UPDATE tl_contaomap_polyline %s WHERE id=?')
 						->set(array(
 							'min_latitude' => $arrExtends[0][0],
 							'min_longitude'=> $arrExtends[0][1],
@@ -243,7 +243,7 @@ class tl_contaomap_polyline extends Backend
 			case 'show':
 			case 'delete':
 			case 'toggle':
-				$objArchive = $this->Database->prepare("SELECT pid FROM tl_contaomap_polyline WHERE id=?")
+				$objArchive = \Database::getInstance()->prepare("SELECT pid FROM tl_contaomap_polyline WHERE id=?")
 											 ->limit(1)
 											 ->execute($id);
 
@@ -272,7 +272,7 @@ class tl_contaomap_polyline extends Backend
 					$this->redirect('contao/main.php?act=error');
 				}
 
-				$objArchive = $this->Database->prepare("SELECT id FROM tl_contaomap_polyline WHERE pid=?")
+				$objArchive = \Database::getInstance()->prepare("SELECT id FROM tl_contaomap_polyline WHERE pid=?")
 											 ->execute($id);
 
 				if ($objArchive->numRows < 1)
@@ -363,7 +363,7 @@ class tl_contaomap_polyline extends Backend
 			}
 		}
 		// Update the database
-		$this->Database->prepare("UPDATE tl_contaomap_polyline SET tstamp=". time() .", published='" . ($blnVisible ? 1 : '') . "' WHERE id=?")
+		\Database::getInstance()->prepare("UPDATE tl_contaomap_polyline SET tstamp=". time() .", published='" . ($blnVisible ? 1 : '') . "' WHERE id=?")
 					   ->execute($intId);
 		$this->createNewVersion('tl_contaomap_polyline', $intId);
 	}
