@@ -17,7 +17,7 @@
  * @package    Controller
  */
 
-class ContaoMapLayer extends System
+class ContaoMapLayer
 {
 	protected $map = NULL;
 	protected $arrData = array();
@@ -29,8 +29,6 @@ class ContaoMapLayer extends System
 	 */
 	function __construct($arrData=array())
 	{
-		parent::__construct();
-		$this->import('Database');
 		foreach($arrData as $k=>$v)
 			$this->__set($k, $v);
 	}
