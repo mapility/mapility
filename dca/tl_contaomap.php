@@ -90,7 +90,7 @@ $GLOBALS['TL_DCA']['tl_contaomap'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'default'                     => '{title_legend},name,alttext;{map_legend},width,height,views,view,zoom,zoomcontrol,mapcontrol,sensor,coords;{template_legend},template;{mapcontents_legend},layerswitch,layer,loadinganimation;{expert_legend},params'
+		'default'                     => '{title_legend},name,alttext;{map_legend},width,height,views,view,zoom,zoomcontrol,mapcontrol,sensor,scrollwheel,coords;{template_legend},template;{mapcontents_legend},layerswitch,layer,loadinganimation;{expert_legend},params'
 	),
 
 	// Fields
@@ -188,6 +188,13 @@ $GLOBALS['TL_DCA']['tl_contaomap'] = array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_contaomap']['sensor'],
 			'inputType'               => 'checkbox',
+			'eval'                    => array('tl_class' => 'w50')
+		),
+		'scrollwheel' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_contaomap']['scrollwheel'],
+			'inputType'               => 'checkbox',
+			'default'                 => true,
 			'eval'                    => array('tl_class' => 'w50')
 		),
 		'template' => array

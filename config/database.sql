@@ -35,6 +35,7 @@ CREATE TABLE `tl_contaomap` (
   `params` text NOT NULL,
   `alttext` varchar(255) NOT NULL default '',
   `sensor` char(1) NOT NULL default '',
+  `scrollwheel` char(1) NOT NULL default '',
   `template` varchar(64) NOT NULL default '',
   `layer` blob NULL,
   `layerswitch` char(1) NOT NULL default '0',
