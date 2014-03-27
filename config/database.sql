@@ -33,6 +33,7 @@ CREATE TABLE `tl_contaomap` (
   `zoomcontrol` varchar(64) NOT NULL default '',
   `mapcontrol` varchar(64) NOT NULL default '',
   `params` text NOT NULL,
+  `styles` text NOT NULL,
   `alttext` varchar(255) NOT NULL default '',
   `sensor` char(1) NOT NULL default '',
   `scrollwheel` char(1) NOT NULL default '',
