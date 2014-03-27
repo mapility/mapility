@@ -36,16 +36,16 @@ abstract class ContaoMap extends \Controller
 		$this->width = 640;
 		$this->height = 480;
 		$this->alttext = '';
-		$this->encoder=\Input::get('fmt');
+		$this->encoder=\Input::getInstance->get('fmt');
 		$this->template='mod_contaomaps';
 
-		if(\Input::get('area'))
-			$this->setArea(\Input::get('area'));
+		if(\Input::getInstance()->get('area'))
+			$this->setArea(\Input::getInstance()->get('area'));
 
 		// check if we have some ids we want to omit.
-		if(\Input::post('known') && \Input::post('known')!='{}')
+		if(\Input::getInstance()->post('known') && \Input::getInstance()->post('known')!='{}')
 		{
-			$knownIds=\Input::post('known');
+			$knownIds=\Input::getInstance()->post('known');
 			if(!is_array($knownIds))
 				$knownIds=@json_decode($knownIds);
 			$realIds=array();

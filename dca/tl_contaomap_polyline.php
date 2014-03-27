@@ -213,28 +213,28 @@ class tl_contaomap_polyline extends Backend
 			$root = $this->User->maplayer;
 		}
 
-		$id = strlen(\Input::get('id')) ? \Input::get('id') : CURRENT_ID;
+		$id = strlen(\Input::getInstance()->get('id')) ? \Input::getInstance()->get('id') : CURRENT_ID;
 
 		// Check current action
-		switch (\Input::get('act'))
+		switch (\Input::getInstance()->get('act'))
 		{
 			case 'paste':
 				// Allow
 				break;
 
 			case 'create':
-				if (!strlen(\Input::get('pid')) || !in_array(\Input::get('pid'), $root))
+				if (!strlen(\Input::getInstance()->get('pid')) || !in_array(\Input::getInstance()->get('pid'), $root))
 				{
-					$this->log('Not enough permissions to create polylines in layer ID "'.\Input::get('pid').'"', 'tl_contaomap_polyline checkPermission', TL_ERROR);
+					$this->log('Not enough permissions to create polylines in layer ID "'.\Input::getInstance()->get('pid').'"', 'tl_contaomap_polyline checkPermission', TL_ERROR);
 					$this->redirect('contao/main.php?act=error');
 				}
 				break;
 
 			case 'cut':
 			case 'copy':
-				if (!in_array(\Input::get('pid'), $root))
+				if (!in_array(\Input::getInstance()->get('pid'), $root))
 				{
-					$this->log('Not enough permissions to '.\Input::get('act').' polyline "'.$id.'" to layer ID "'.\Input::get('pid').'"', 'tl_contaomap_polyline checkPermission', TL_ERROR);
+					$this->log('Not enough permissions to '.\Input::getInstance()->get('act').' polyline "'.$id.'" to layer ID "'.\Input::getInstance()->get('pid').'"', 'tl_contaomap_polyline checkPermission', TL_ERROR);
 					$this->redirect('contao/main.php?act=error');
 				}
 				// NO BREAK STATEMENT HERE
@@ -255,7 +255,7 @@ class tl_contaomap_polyline extends Backend
 
 				if (!in_array($objArchive->pid, $root))
 				{
-					$this->log('Not enough permissions to '.\Input::get('act').' polyline ID "'.$id.'" of layer ID "'.$objArchive->pid.'"', 'tl_contaomap_polyline checkPermission', TL_ERROR);
+					$this->log('Not enough permissions to '.\Input::getInstance()->get('act').' polyline ID "'.$id.'" of layer ID "'.$objArchive->pid.'"', 'tl_contaomap_polyline checkPermission', TL_ERROR);
 					$this->redirect('contao/main.php?act=error');
 				}
 				break;
@@ -287,9 +287,9 @@ class tl_contaomap_polyline extends Backend
 				break;
 
 			default:
-				if (strlen(\Input::get('act')))
+				if (strlen(\Input::getInstance()->get('act')))
 				{
-					$this->log('Invalid command "'.\Input::get('act').'"', 'tl_contaomap_polyline checkPermission', TL_ERROR);
+					$this->log('Invalid command "'.\Input::getInstance()->get('act').'"', 'tl_contaomap_polyline checkPermission', TL_ERROR);
 					$this->redirect('contao/main.php?act=error');
 				}
 				elseif (!in_array($id, $root))
@@ -313,9 +313,9 @@ class tl_contaomap_polyline extends Backend
 	 */
 	public function toggleIcon($row, $href, $label, $title, $icon, $attributes)
 	{
-		if (strlen(\Input::get('tid')))
+		if (strlen(\Input::getInstance()->get('tid')))
 		{
-			$this->toggleVisibility(\Input::get('tid'), (\Input::get('state') == 1));
+			$this->toggleVisibility(\Input::getInstance()->get('tid'), (\Input::getInstance()->get('state') == 1));
 			$this->redirect($this->getReferer());
 		}
 
