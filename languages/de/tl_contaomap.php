@@ -27,6 +27,7 @@ $GLOBALS['TL_LANG']['tl_contaomap']['coords']= array('Koordinaten des Kartenzent
 $GLOBALS['TL_LANG']['tl_contaomap']['template']= array('Template', 'Verwendetes Template.');
 $GLOBALS['TL_LANG']['tl_contaomap']['layer']= array('Layer', 'Wählen Sie hier alle Kartenlayer, welche in dieser Karte angezeigt werden sollen.');
 $GLOBALS['TL_LANG']['tl_contaomap']['params']= array('Weitere Parameter', 'Hier können weitere Parameter eingegeben werden, z.B. zur Erzeugung multipler Markierungen.');
+$GLOBALS['TL_LANG']['tl_contaomap']['styles']= array('Styles', 'Hier können Styles als JSON-Array mit Style-Objekten übergeben. Siehe auch http://goo.gl/yOve');
 
 /**
  * References
