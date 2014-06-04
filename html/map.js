@@ -1077,7 +1077,7 @@ ContaoMapping.Map = new ContaoMapping.Class({
 	displayBox: function(e)
 	{
 		return;
-		var d=window.addEvent("domready", function(){document.id("map_ajaxBox");
+		var d=document.id("map_ajaxBox");
 		if(!d)d = new Element("div").setProperty("id", "map_ajaxBox").injectInside(this.container);
 		if(Browser.Engine.trident&&Browser.Engine.version<5)
 		{var f=$$("select");for (var c=0;c<f.length;c++){f[c].setStyle("visibility", "hidden");};}
