@@ -1077,7 +1077,7 @@ ContaoMapping.Map = new ContaoMapping.Class({
 	displayBox: function(e)
 	{
 		return;
-		var d=$("map_ajaxBox");
+		var d=window.addEvent("domready", function(){document.id("map_ajaxBox");
 		if(!d)d = new Element("div").setProperty("id", "map_ajaxBox").injectInside(this.container);
 		if(Browser.Engine.trident&&Browser.Engine.version<5)
 		{var f=$$("select");for (var c=0;c<f.length;c++){f[c].setStyle("visibility", "hidden");};}
@@ -1087,7 +1087,7 @@ ContaoMapping.Map = new ContaoMapping.Class({
 	hideBox: function()
 	{
 		return;
-		var c=$("map_ajaxBox");
+		var c=document.id("map_ajaxBox");
 		if(c){
 			c.setStyle("display","none");
 			if(Browser.Engine.trident&&Browser.Engine.version<5)
@@ -1215,7 +1215,7 @@ ContaoMapping.Map = new ContaoMapping.Class({
 	killscript: function(id)
 	{
 		var script = this.scripts[id];
-		$(script).destroy();
+		document.id(script).destroy();
 		delete(this.scripts[id]);
 	},
 	runcode: function(code)
