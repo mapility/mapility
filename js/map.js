@@ -43,7 +43,7 @@ ContaoMapping.Map = new ContaoMapping.Class({
 		{
 			this.loadingbox = new Element('div', {
 				'class': 'map_ajaxBox'
-			}).inject($(this.container), 'bottom');
+			}).inject(document.id(this.container), 'bottom');
 		}
 		this.loadingbox.setStyle('display', state ? 'block' : 'none');
 	},
@@ -170,7 +170,7 @@ ContaoMapping.Map = new ContaoMapping.Class({
 		var script = this.$scripts[id];
 		if(script)
 		{
-			$(script).destroy();
+            document.id(script).destroy();
 			delete(this.$scripts[id]);
 		}
 	},
