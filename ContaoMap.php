@@ -36,7 +36,7 @@ abstract class ContaoMap extends \Controller
 		$this->width = 640;
 		$this->height = 480;
 		$this->alttext = '';
-		$this->encoder=\Input::getInstance->get('fmt');
+		$this->encoder=\Input::getInstance()->get('fmt');
 		$this->template='mod_contaomaps';
 
 		if(\Input::getInstance()->get('area'))
